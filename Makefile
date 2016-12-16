@@ -5,7 +5,7 @@ INSTALL_PATH=$(GOPATH)/src/github.com/samsabra/philrs232
 
 deps:
 	go get github.com/mtibben/gogpm
-	go get github.com/tcnksm/ghr
+	go get gopkg.in/tcnksm/ghr.v0
 	go get github.com/mitchellh/gox
 	$(GOPATH)/bin/gogpm install
 
