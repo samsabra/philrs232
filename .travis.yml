@@ -4,18 +4,11 @@ language: go
 go:
 # Use only the latest version
   - 1.4
+env:
+  - "PATH=/home/travis/gopath/bin:$PATH"
 before_install:
- - sudo apt-get install golang-go-linux-386 
-
+  - make deps
 script:
-  - GOOS=windows GOARCH=386 go build -o hello-windows.exe *.go
-  - GOOS=darwin GOARCH=386 go build -o hello-mac *.go
-  - GOOS=linux GOARCH=386 go build -o hello-linux *.go
-
-deploy:
-  provider: releases
-  api_key: "2baf9432fc29ed9c6090" 
-  file: "hello-mac"
-  skip_cleanup: true
-  on:
-    tags: true
+  - make build
+after_success:
+  - make release
