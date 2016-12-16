@@ -1,0 +1,14 @@
+# Use https://travis-ci.org/ for automatic testing
+language: go
+
+go:
+# Use only the latest version
+  - 1.4
+install:
+# Resolve dependencies
+  - go get -u "NAME"
+
+script:
+  - GOOS=windows GOARCH=386 go build -o hello-windows.exe *.go
+  - GOOS=darwin GOARCH=386 go build -o hello-mac *.go
+  - GOOS=linux GOARCH=386 go build -o hello-linux *.go
