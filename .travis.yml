@@ -4,6 +4,8 @@ language: go
 go:
 # Use only the latest version
   - 1.4
+before_install:
+ - sudo apt-get install golang-go-linux-386 
 
 script:
   - GOOS=windows GOARCH=386 go build -o hello-windows.exe *.go
